@@ -8,8 +8,10 @@ def test_get_dicom_fields_local_file():
     fields = get_dicom_fields(dicom_path)
     assert isinstance(fields, dict)
     # Check for some common DICOM fields (may vary based on your test.dcm)
-    assert "Error" not in fields
     assert len(fields) > 0
+    assert "PatientName" in fields
+    assert "PatientID" in fields
+    assert "PixelData" in fields
 
 def test_split_dicom_fields():
     # Create a sample fields dict with binary and non-binary values
