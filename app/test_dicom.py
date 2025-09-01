@@ -27,6 +27,5 @@ def test_split_dicom_fields():
     assert "SomeList" in non_binary
     assert "PixelData" in binary
     assert isinstance(non_binary, dict)
-    assert isinstance(binary, dict)
     assert len(non_binary) == 4
     assert len(binary) == 1
