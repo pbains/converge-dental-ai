@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "7777:7777"
+    environment:
+      - AWS_ACCESS_KEY_ID=your-access-key
+      - AWS_SECRET_ACCESS_KEY=your-secret-key
+      - AWS_DEFAULT_REGION=us-east-1
+    command: /bin/sh -c "pytest app/test_dicom.py && python3 app/main.py"

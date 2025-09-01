@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Upload & S3 List{% endblock %}
+{% block content %}
+  <h1>Upload a File</h1>
+  <form method=post enctype=multipart/form-data>
+    <input type=file name=file>
+    <input type=submit value=Upload>
+  </form>
+  <h2>S3 Files</h2>
+  <ul>
+    {% for f in files %}
+      <li>{{ f }}</li>
+    {% endfor %}
+  </ul>
+  {% if dicom_fields %}
+    <h2>DICOM Fields</h2>
+    <ul>
+      {% for key, value in dicom_fields.items() %}
+        {% if value is string or value is number or value is mapping or value is sequence %}
+          <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% if binary_fields %}
+      <details>
+        <summary>&#9654; More details</summary>
+        <ul>
+          {% for key in binary_fields %}
+            <li><strong>{{ key }}</strong>: Binary data</li>
+          {% endfor %}
+        </ul>
+      </details>
+    {% endif %}
+  {% endif %}
+{% endblock %}
