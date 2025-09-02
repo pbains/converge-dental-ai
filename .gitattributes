@@ -1,3 +1,5 @@
 *.dic filter=git-crypt diff=git-crypt
 *.dcm filter=git-crypt diff=git-crypt
 secrets/* filter=git-crypt diff=git-crypt
+*.dcm filter=lfs diff=lfs merge=lfs -text
+*.dic filter=lfs diff=lfs merge=lfs -text
